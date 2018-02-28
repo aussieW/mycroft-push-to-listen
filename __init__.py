@@ -13,7 +13,7 @@ class MycroftPushToListen(MycroftSkill):
         
     def initialize(self):
         # start the button listener
-        subprocess.call(join(abspath(dirname(__file__), 'button.py')))
+        subprocess.call(join(abspath(dirname(__file__)), 'button.py'))
         
 def create_skill():
     return MycroftPushToListen()
