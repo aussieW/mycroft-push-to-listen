@@ -15,7 +15,7 @@ class MycroftPushToListen(MycroftSkill):
     def initialize(self):
         # start the button listener
         #subprocess.call(join(abspath(dirname(__file__)), 'button.py'))
-        subprocess.call(['python, '/opt/mycroft/skills/mycroft-push-to-listen/button.py'])
+        subprocess.call(['python', '/opt/mycroft/skills/mycroft-push-to-listen/button.py'])
         
 def create_skill():
     return MycroftPushToListen()
