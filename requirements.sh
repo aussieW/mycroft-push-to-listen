@@ -1,0 +1,1 @@
+sudo adduser mycroft gpio
