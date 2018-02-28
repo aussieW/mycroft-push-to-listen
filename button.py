@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+
 # short press activates Mycroft to listen
 # holding for more than 1 second sends a stop signal
 
