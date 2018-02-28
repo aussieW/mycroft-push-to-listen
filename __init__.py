@@ -1,7 +1,7 @@
 from mycroft.util.log import getLogger
 from mycroft.skills.core import MycroftSkill
 import subprocess
-from os.path import join, abspath
+from os.path import join, abspath, dirname
 
 __author__ = 'aussieW'
 
