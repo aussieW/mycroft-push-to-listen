@@ -10,6 +10,7 @@ LOGGER = getLogger(__name__)
 class MycroftPushToListen(MycroftSkill):
     def __init__(self):
         super(MycroftPushToListen, self).__init__(name='MycroftPushToListen')
+        buttonPin = self.settings['gpio'])
         
     def initialize(self):
         # start the button listener
