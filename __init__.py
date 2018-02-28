@@ -1,8 +1,7 @@
 from mycroft.util.log import getLogger
 from mycroft.skills.core import MycroftSkill
 import subprocess
-from os.path import join, abspath, dirname
-import time
+#from os.path import join, abspath, dirname
 
 __author__ = 'aussieW'
 
@@ -14,8 +13,8 @@ class MycroftPushToListen(MycroftSkill):
         
     def initialize(self):
         # start the button listener
-        subprocess.call(join(abspath(dirname(__file__)), 'button.py'))
-        time.sleep(60)
+        #subprocess.call(join(abspath(dirname(__file__)), 'button.py'))
+        subprocess.call(['python, '/opt/mycroft/skills/mycroft-push-to-listen/button.py'])
         
 def create_skill():
     return MycroftPushToListen()
