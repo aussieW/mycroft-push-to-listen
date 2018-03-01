@@ -8,7 +8,7 @@ import time
 import RPi.GPIO as GPIO
 from subprocess import call
 
-gpio_pin=sys.argv[1]  # which GPIO the button is attached to
+gpio_pin=int(sys.argv[1])  # which GPIO the button is attached to
 longpress_threshold=1  # differentiate between a short and lon press
 pressed_time = 0  # The time the button was last pressed
 GPIO.setmode(GPIO.BCM)
