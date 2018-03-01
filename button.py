@@ -3,11 +3,12 @@
 # short press activates Mycroft to listen
 # holding for more than 1 second sends a stop signal
 
+import sys
 import time
 import RPi.GPIO as GPIO
 from subprocess import call
 
-gpio_pin=14  # GPIO button is attached to
+gpio_pin=sys.arv[1]  # which GPIO the button is attached to
 longpress_threshold=1  # differentiate between a short and lon press
 pressed_time = 0  # The time the button was last pressed
 GPIO.setmode(GPIO.BCM)
