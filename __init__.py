@@ -16,6 +16,7 @@ class MycroftPushToListen(MycroftSkill):
         # start the button listener
         #subprocess.call(join(abspath(dirname(__file__)), 'button.py'))
         proc = subprocess.Popen(['python', '/opt/mycroft/skills/mycroft-push-to-listen/button.py', buttonPin])
+        LOGGER.info('button process pid = ' + str(proc.pid))
         
     def shutdown(self):
         # shutdown the button.py process
