@@ -31,9 +31,9 @@ try:
             time.sleep(0.01)
 		
         if time.time() - pressed_time < longpress_threshold:
-            call(['python', "./scripts/mbus.py", "localhost", "mycroft.mic.listen"])
+            call(['python', "/opt/mycroft/skills/mycroft-push-to-listen/scripts/mbus.py", "localhost", "mycroft.mic.listen"])
         else:
-            call(['python', "./scripts/mbus.py", "localhost", "mycroft.stop"])
+            call(['python', "/opt/mycroft/skills/mycroft-push-to-listen/scripts/mbus.py", "localhost", "mycroft.stop"])
         time.sleep(1)
 		
 except KeyboardInterrupt:
