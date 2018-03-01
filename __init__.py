@@ -21,6 +21,7 @@ class MycroftPushToListen(MycroftSkill):
         
     def shutdown(self):
         # shutdown the button.py process
+        LOGGER.info('Shutting down button.py')
         self.proc.kill()
         super(MycroftPushToListen, self).shutdown()
         
