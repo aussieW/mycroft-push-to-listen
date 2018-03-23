@@ -15,7 +15,7 @@ class MycroftPushToListen(MycroftSkill):
         self.proc = None
         
         # listen for setting changes
-        self.set_changed_callback(self._check_gpio_changed)
+        self.settings.set_changed_callback(self._check_gpio_changed)
         
     def initialize(self):
         # start the button listener
