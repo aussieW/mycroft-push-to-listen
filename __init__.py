@@ -24,7 +24,7 @@ class MycroftPushToListen(MycroftSkill):
         
     def _check_gpio_changed(self):
         # check if the gpio pin has changed
-        if self.settings['gpio'] <> self.button_pin:
+        if self.settings['gpio'] != self.button_pin:
             LOGGER.info("GPIO pin changed")
             # restart button.py with the new pin assigned
             self._stop()
