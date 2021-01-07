@@ -11,13 +11,17 @@ LOGGER = getLogger(__name__)
 class MycroftPushToListen(MycroftSkill):
     def __init__(self):
         super(MycroftPushToListen, self).__init__(name='MycroftPushToListen')
-        self.button_pin = self.settings['gpio']
+#        self.button_pin = self.settings['gpio']
         self.proc = None
         
         # listen for setting changes
-        self.settings.set_changed_callback(self._check_gpio_changed)
+#        self.settings.set_changed_callback(self._check_gpio_changed)
         
     def initialize(self):
+        self.button_pin = self.settings.get('gpio')
+        self.button_pin = 14
+        self.settings_change_callback = self._check_gpio_changed
+        self._check_gpio_changed
         # start the button listener
         #subprocess.call(join(abspath(dirname(__file__)), 'button.py'))
         self._start()
@@ -29,16 +33,17 @@ class MycroftPushToListen(MycroftSkill):
             # restart button.py with the new pin assigned
             self._stop()
             time.sleep(2)  # chose an arbitrary value
-            self.button_pin = self.settings['gpio']
-            self.start()
+            self.button_pin = self.settings.get('gpio')
+            self._start()
         
     def _start(self):
-        self.proc = subprocess.Popen(['python', '/opt/mycroft/skills/mycroft-push-to-listen/button.py', self.button_pin])
+        LOGGER.info('Button pin: GPIO%s' %self.button_pin)
+        self.proc = subprocess.Popen(['python', '/opt/mycroft/skills/mycroft-push-to-listen/button.py', '14']) #self.button_pin])
         LOGGER.info('button process pid = ' + str(self.proc.pid))
     
     def _stop(self):
-        self.proc.kill()
         LOGGER.info('Shutting down button.py')
+        self.proc.kill()
         
     def shutdown(self):
         # shutdown the button.py process
