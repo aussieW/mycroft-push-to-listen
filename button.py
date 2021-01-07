@@ -17,27 +17,24 @@ GPIO.setup(gpio_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # set the mode of the
 try:
     # Loop around waiting for a callback to occur
     while True:
-        
-        print 'Wait for a button press'
-	GPIO.wait_for_edge(gpio_pin, GPIO.FALLING, bouncetime=10)  # wait for button to trigger
-        print GPIO.input(gpio_pin)
-        # Wait for the button to settle.
-        time.sleep(.03)
+        print('Wait for a button press')
+        GPIO.wait_for_edge(gpio_pin, GPIO.RISING, bouncetime=500)  # wait for button to trigger
+        GPIO.remove_event_detect(gpio_pin)
+        print(GPIO.input(gpio_pin))
         # Set up a timer to see how long the button was held down for.
         pressed_time = time.time()
-		
         while (GPIO.input(gpio_pin) == 1):
             # Loop until button is released.
-            time.sleep(0.01)
+            time.sleep(0.001)
 		
         if time.time() - pressed_time < longpress_threshold:
             call(['python', "/opt/mycroft/skills/mycroft-push-to-listen/scripts/mbus.py", "localhost", "mycroft.mic.listen"])
         else:
             call(['python', "/opt/mycroft/skills/mycroft-push-to-listen/scripts/mbus.py", "localhost", "mycroft.stop"])
-        time.sleep(1)
+
 		
 except KeyboardInterrupt:
     # Clean up interrupts prior to exiting.
-    print 'cleaning up GPIOs ...'
+    print('cleaning up GPIOs ...')
     GPIO.cleanup()
-    print '... exiting'
+    print('... exiting')
